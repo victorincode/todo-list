@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{ item.title }}</h2>
+<mat-dialog-content class="dialog-container">
+  <p>{{ item.content }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" (click)="onEditItem()">
+    Edit
+  </button>
+  <button mat-button mat-dialog-close cdkFocusInitial>Close</button>
+</mat-dialog-actions>

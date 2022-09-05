@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Confirmation</h2>
+<mat-dialog-content [innerHTML]="deletionMessage"></mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    mat-flat-button
+    color="warn"
+    (click)="deleteStatus === 'single' ? onDeleteItem() : onDeleteAllItems()"
+  >
+    Delete
+  </button>
+  <button mat-flat-button cdkFocusInitial mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

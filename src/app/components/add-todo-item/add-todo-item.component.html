@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ isUpdatingItem ? "Update" : "Add" }} Item</h2>
+<form
+  [formGroup]="todoFormGroup"
+  (ngSubmit)="isUpdatingItem ? onUpdateTodo() : onAddTodo()"
+>
+  <mat-dialog-content class="dialog-container">
+    <!-- Title -->
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title" />
+      <mat-error *ngIf="title?.invalid">Title is required!</mat-error>
+    </mat-form-field>
+    <!-- Content -->
+    <mat-form-field appearance="fill">
+      <mat-label>Content</mat-label>
+      <textarea
+        #descriptionLength
+        cols="30"
+        rows="10"
+        [maxlength]="maxLength"
+        matInput
+        formControlName="content"
+      ></textarea>
+      <mat-error *ngIf="content?.invalid">Content is required!</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <p
+    align="end"
+    [ngStyle]="{
+      color: descriptionLength.value.length === maxLength ? 'red' : 'black'
+    }"
+  >
+    {{ descriptionLength.value.length }}/{{ maxLength }}
+  </p>
+  <!-- Action buttons -->
+  <mat-dialog-actions align="end">
+    <button type="submit" mat-flat-button color="primary">
+      {{ isUpdatingItem ? "Update" : "Add" }}
+    </button>
+    <button type="button" mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</form>
